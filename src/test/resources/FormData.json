@@ -1,0 +1,28 @@
+[
+  {
+    "contactName": "Samy",
+    "contactEmail": "Samy@gmail.com",
+    "contactPhone": "1234567890",
+    "customerName": "Samy",
+    "customerID": "C123456",
+    "customerContactName": "Samy",
+    "customerContactEmail": "Samy@gmail.com",
+    "CustomerStrAddress": "123 Main St",
+    "customerCity": "New York",
+    "customerState": "Nevada",
+    "customerZip": "10001",
+    "companyName": "OneKonnect",
+    "companyAddress": "456 Elm St",
+    "companyCity": "Los Angeles",
+    "companyState": "Nevada",
+    "FedralTaxID" : "123456789",
+    "numofCarriers" : "5",
+    "numofEmployees" : "10",
+    "planYrStartDate": "08/07/2025",
+    "CarrierName": "CarrierOne",
+    "CarrierContactName": "XSamy",
+    "CarrierContactEmail": "SamyCarrier@gmail.com",
+    "SelectInclude" : "No",
+    "SelectPlan" : "Life"
+  }
+]
