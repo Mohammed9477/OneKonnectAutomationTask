@@ -47,6 +47,8 @@ public class FormPage {
         ElementHelper.sendText(email, driver, PartnerContactEmail);
     }
     public void enterPartnerContactPhone(String phone) {
+        ElementHelper.waitForClickable(driver, PartnerContactPhone);
+        ElementHelper.click(driver, PartnerContactPhone);
         ElementHelper.sendText(phone, driver, PartnerContactPhone);
     }
     public void enterCustomerName(String name) {
@@ -122,5 +124,6 @@ public class FormPage {
     public void successButton() {
         ElementHelper.jsClick(driver, SuccessButton);
     }
+
 
 }

@@ -1,18 +1,25 @@
 import Pages.DashboardPage;
 import Pages.FormPage;
+import Pages.OrderPage;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+import utilities.commonHelper.ElementHelper;
 import utilities.datareaders.DataProviderUtils;
+import utilities.extentReport.ExtentReportListener;
 
+
+@Listeners(ExtentReportListener.class)
 public class CreateForm extends BaseTest {
 
     FormPage formPage;
     DashboardPage dashboardPage;
-
+    OrderPage orderPage;
     @BeforeTest
     public void setUp() {
         formPage = new FormPage();
         dashboardPage = new DashboardPage();
+        orderPage = new OrderPage();
     }
 
     @Test(dataProvider = "FormData", dataProviderClass = DataProviderUtils.class)
@@ -23,9 +30,11 @@ public class CreateForm extends BaseTest {
                            String CarrierName, String CarrierContactName,
                            String CarrierContactEmail, String selectInclude,String selectPlan) throws InterruptedException {
 
+        // Step 1-2: Open the EDI form
         dashboardPage.clickPlusButton();
         dashboardPage.clickEDILink();
 
+        // Step 3: Fill mandatory fields
         formPage.enterPartnerContactName(PartnerContactName);
         formPage.enterPartnerContactEmail(PartnerContactEmail);
         formPage.enterPartnerContactPhone(PartnerContactPhone);
@@ -51,10 +60,18 @@ public class CreateForm extends BaseTest {
         formPage.selectIncludeSelection(selectInclude);
         formPage.selectPlanType(selectPlan);
 
+        // Step 4: Click on Submit button
         formPage.clickSubmitButton();
         formPage.clickConfirm();
         formPage.successButton();
-        Thread.sleep(5000);
+
+        // Step 5-7: Verify order in history
+        dashboardPage.clickOrderHistory();
+        orderPage.enterKeyword(PartnerContactName);
+        orderPage.clickOnSearchButton();
+        orderPage.assertCustomerName(PartnerContactName);
+
+
     }
 
 }

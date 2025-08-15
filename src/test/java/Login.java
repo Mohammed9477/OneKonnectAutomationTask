@@ -1,10 +1,13 @@
 import Pages.DashboardPage;
 import Pages.LoginPage;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import utilities.commonHelper.AssertionHelper;
 import utilities.datareaders.DataProviderUtils;
+import utilities.extentReport.ExtentReportListener;
 
+@Listeners(ExtentReportListener.class)
 public class Login extends BaseTest{
     DashboardPage dashboardPage;
     LoginPage loginPage;
