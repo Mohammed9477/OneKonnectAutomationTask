@@ -36,20 +36,6 @@ public class ElementHelper {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(waitingTime));
         wait.until(ExpectedConditions.textToBePresentInElementLocated(locator, expectedText));
     }
-
-    public static WebElement fluentWait(WebDriver driver, By locator) {
-        Wait<WebDriver> wait = new FluentWait<>(driver)
-                .withTimeout(Duration.ofSeconds(20))
-                .pollingEvery(Duration.ofSeconds(2))
-                .ignoring(NoSuchElementException.class);
-        return wait.until(driver1 -> driver1.findElement(locator));
-    }
-
-    public static void waitForLoaderToDisappear(WebDriver driver, By loaderLocator) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(waitingTime));
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(loaderLocator));
-    }
-
     /**
      * -----------------------------
      * Can be extracted into a separate class: BaseElementHelper

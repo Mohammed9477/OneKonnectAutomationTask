@@ -67,37 +67,5 @@ public class AssertionHelper {
         Assert.assertEquals(actualText.trim(), expectedText.trim(),
                 "❌ Text mismatch! Expected: [" + expectedText + "] but found: [" + actualText + "]");
     }
-    //    public static void assertAllElementsContainKeyword(WebDriver driver, By locator, String keyword) {
-//        List<WebElement> elements = ElementHelper.findElements(driver, locator);
-//        String normalizedKeyword = keyword.replaceAll("[-\\s]", "").toLowerCase();
-//
-//        for (WebElement element : elements) {
-//            String actualText = element.getText();
-//            String normalizedText = actualText.replaceAll("[-\\s]", "").toLowerCase();
-//
-//            Assert.assertTrue(normalizedText.contains(normalizedKeyword),
-//                    "❌ Keyword [" + keyword + "] not found in result: " + actualText);
-//        }
-//
-//        System.out.println("✅ All search results contain the keyword: " + keyword);
-//    }
-    public static void assertAllElementsContainKeyword(WebDriver driver, By productCards, By overlayNameLocator, String keyword) {
-        Actions actions = new Actions(driver);
-        List<WebElement> cards = ElementHelper.findElements(driver, productCards);
-        String normalizedKeyword = keyword.replaceAll("[-\\s]", "").toLowerCase();
-
-        for (WebElement card : cards) {
-            actions.moveToElement(card).perform(); // hover to reveal overlay
-
-            WebElement nameElement = card.findElement(overlayNameLocator);
-            String actualName = nameElement.getText().trim();
-            String normalizedName = actualName.replaceAll("[-\\s]", "").toLowerCase();
-
-            Assert.assertTrue(normalizedName.contains(normalizedKeyword),
-                    "❌ Product name does not match. Expected keyword [" + keyword + "] but got [" + actualName + "]");
-        }
-
-        System.out.println("✅ All hovered overlay product names contain the keyword: " + keyword);
-    }
 
 }
